@@ -1,0 +1,564 @@
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="com.example.parti.quitr.MainActivity">
+
+ <!-- stats: main stats -->
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:background="#d8d8d8"
+                    >
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:background="#fff"
+                        android:layout_marginBottom="0.1dp"
+                        android:layout_span="2"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="15dp"
+                                android:text="Milestone" />
+
+                            <TextView
+                                android:id="@+id/milestone_time"
+                                android:layout_width="wrap_content"
+                                android:text="2 hours"
+                                android:textSize="15dp"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/colorPrimary"
+                                android:layout_height="wrap_content" />
+
+                        </RelativeLayout>
+
+                        <at.grabner.circleprogress.CircleProgressView
+                            android:id="@+id/circleView"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:layout_gravity="center_horizontal"
+                            CircleProgressView:cpv_maxValue="100"
+                            CircleProgressView:cpv_textSize="30sp"
+                            CircleProgressView:cpv_textMode="Percent"
+                            CircleProgressView:cpv_unitSize="20sp"
+                            CircleProgressView:cpv_barColor="@color/colorPrimary"
+                            CircleProgressView:cpv_rimColor="#d8d8d8"
+                            CircleProgressView:cpv_textColor="@color/text_color_primary"
+                            CircleProgressView:cpv_unitColor="@color/text_color_primary"
+                            CircleProgressView:cpv_spinColor="@color/colorPrimary"
+                            CircleProgressView:cpv_barWidth="15dp"
+                            CircleProgressView:cpv_innerContourSize="0dp"
+                            CircleProgressView:cpv_outerContourSize="0dp"
+                            CircleProgressView:cpv_rimWidth="8dp"
+                            CircleProgressView:cpv_unit="%"
+                            CircleProgressView:cpv_unitPosition="right_bottom"
+                            CircleProgressView:cpv_unitScale="0.1"
+                            CircleProgressView:cpv_textScale="0.2"
+                            CircleProgressView:cpv_showUnit="true"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="wrap_content">
+
+                            <com.joanzapata.iconify.widget.IconTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="{fa-quote-left} "
+                                android:textColor="@color/text_color_secondary"
+                                />
+
+                            <TextView
+                                android:id="@+id/milestone_quote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="quote"
+                                android:textStyle="italic"
+                                android:textColor="@color/text_color_primary"
+                                />
+
+                            <com.joanzapata.iconify.widget.IconTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" {fa-quote-right}"
+                                android:textColor="@color/text_color_secondary"
+                                />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:background="#d8d8d8"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginRight="0.5dp"
+                        android:layout_marginBottom="0.5dp"
+                        android:layout_width="0dp"
+                        >
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="40dp"
+                            android:textColor="@color/colorAccent"
+                            android:text="{mdi-coin}"
+                            android:paddingBottom="5dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/text_money_saved"
+                            android:text="0 kr"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/text_color_primary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="Money saved"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color_secondary"
+
+                            android:layout_height="wrap_content"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="0.5dp"
+                        android:layout_width="0dp"
+                        >
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="40dp"
+                            android:textColor="@color/colorAccent"
+                            android:text="{mdi-clock}"
+                            android:paddingBottom="5dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/clock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/text_color_primary"
+                            android:text="Calculating" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/text_color_secondary"
+                            android:text="Time not smoked" />
+
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:background="#d8d8d8"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginRight="0.5dp"
+                        android:layout_width="0dp"
+                        >
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="40dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/colorAccent"
+                            android:text="{mdi-smoking-off}"
+                            android:layout_marginTop="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/text_cigs_not_smoked"
+                            android:text="0"
+                            android:textColor="@color/text_color_primary"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="Cigarettes not smoked"
+                            android:textColor="@color/text_color_secondary"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        >
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="{mdi-heart}"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/colorAccent"
+                            android:layout_marginTop="10dp"
+                            android:textSize="40sp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_primary"
+                            android:layout_gravity="center_horizontal"
+                            android:text="22m" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_secondary"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Live saved" />
+
+                    </LinearLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- dev buttons -->
+        <android.support.v7.widget.CardView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@color/text_color_primary"
+                        android:text="Magic Dev Buttons"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:text="+ 5 hour"
+                            android:id="@+id/timeplus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:text="- 5 hour"
+                            android:id="@+id/timeminus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:text="- 1 min"
+                            android:id="@+id/one_min_minus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:text="+ 1 min"
+                            android:id="@+id/one_min_plus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <Button
+                            android:text="+ 1 day"
+                            android:id="@+id/one_day_plus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </TableRow>
+                <Button
+                    android:text="Spin the wheel"
+                    android:id="@+id/spin_me_around"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:text="reset milestones"
+                    android:id="@+id/resetmilestones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:text="reset time"
+                    android:id="@+id/reset_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TableRow>
+
+                </TableRow>
+
+
+
+
+            </TableLayout>
+
+
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <!-- stats: stuff lost -->
+        <android.support.v7.widget.CardView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    >
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="15dp"
+                        android:text="During the time you smoked" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:background="#d8d8d8"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="2"
+
+                        android:layout_marginRight="0.4dp"
+                        android:layout_marginBottom="0.4dp"
+                        android:layout_width="0dp"
+                        >
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="40dp"
+                            android:textColor="@color/colorAccent"
+                            android:text="{mdi-smoking}"
+                            android:paddingBottom="5dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/text_cigs_smoked"
+                            android:text="14458"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/text_color_primary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="Cigarettes smoked"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color_secondary"
+
+                            android:layout_height="wrap_content"
+                            />
+                    </LinearLayout>
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:background="#d8d8d8"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginRight="0.4dp"
+                        android:layout_width="0dp"
+                        >
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="40dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/colorAccent"
+                            android:text="{mdi-coin}"
+                            android:layout_marginTop="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/text_money_spend"
+                            android:text="0"
+                            android:textColor="@color/text_color_primary"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="Money spend"
+                            android:textColor="@color/text_color_secondary"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        >
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="{mdi-heart}"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/colorAccent"
+                            android:layout_marginTop="10dp"
+                            android:textSize="40sp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_primary"
+                            android:layout_gravity="center_horizontal"
+                            android:text="22m" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_secondary"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Live saved" />
+
+                    </LinearLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

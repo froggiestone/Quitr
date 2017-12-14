@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Quitr</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello fragment 1</string>
+    <string name="item_1">Overview</string>
+    <string name="item_2">Timeline</string>
+    <string name="item_3">to come</string>
 </resources>

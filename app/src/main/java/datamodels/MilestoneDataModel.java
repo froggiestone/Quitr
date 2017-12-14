@@ -6,8 +6,9 @@ package datamodels;
 
 public class MilestoneDataModel {
     public String timeunit;
-    public String description;
-    public Integer hours;
+    public Integer period;
+    public String goal;
+    public Integer totalhours;
     public Boolean completed;
     public String quote;
 }
