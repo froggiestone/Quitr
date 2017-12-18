@@ -1,10 +1,12 @@
 package com.example.parti.quitr;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.fonts.MaterialCommunityModule;
@@ -23,8 +33,10 @@ import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
+import Utillities.CravingsValueFormatter;
 import Utillities.MilestoneData;
 import at.grabner.circleprogress.CircleProgressView;
 import datamodels.MilestoneDataModel;
@@ -43,6 +55,7 @@ public class MainFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    Activity activity;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -72,12 +85,13 @@ public class MainFragment extends Fragment {
     private TextView text_milestone_time;
     private TextView text_milestone_quote;
     private CircleProgressView circleView;
-
+    private BarChart cravings_chart;
     List<MilestoneDataModel> milestoneList = new MilestoneData().Build(quitTime);
 
     private OnFragmentInteractionListener mListener;
 
-    public MainFragment() {
+    public MainFragment()
+    {
         // Required empty public constructor
     }
 
@@ -127,11 +141,13 @@ public class MainFragment extends Fragment {
         text_milestone_quote = view.findViewById(R.id.milestone_quote);
         //  text_live_saved = findViewById(R.id.text_live_saved);
         text_cigs_not_smoked = view.findViewById(R.id.text_cigs_not_smoked);
+        cravings_chart = view.findViewById(R.id.cravings_chart);
 
         setupSharedPreferences(false);
         nextMilestone();
         circleView.setValueAnimated(circleValue);
-        //startClock();
+        startClock();
+        createCravingsChart();
 
         final Button button_timeplus = view.findViewById(R.id.timeplus);
         button_timeplus.setOnClickListener(new View.OnClickListener() {
@@ -218,7 +234,7 @@ public class MainFragment extends Fragment {
                 try {
                     while (!isInterrupted()) {
 
-                        getActivity().runOnUiThread(new Runnable() {
+                        activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
 
@@ -409,6 +425,53 @@ public class MainFragment extends Fragment {
 
     }
 
+    private void createCravingsChart()
+    {
+        List<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(1f, 25));
+        entries.add(new BarEntry(2f, 17));
+        entries.add(new BarEntry(3f, 23));
+        entries.add(new BarEntry(4f, 15));
+        entries.add(new BarEntry(5f, 14));
+
+        BarDataSet set = new BarDataSet(entries, "Cravings");
+        set.setColor(ContextCompat.getColor(getActivity(), R.color.colorAccent));
+        set.setValueTextSize(12f);
+        BarData data = new BarData(set);
+
+        data.setValueFormatter(new CravingsValueFormatter());
+
+        // data has AxisDependency.LEFT
+        YAxis yAxis = cravings_chart.getAxisLeft();
+        yAxis.setDrawLabels(false); // no axis labels
+        yAxis.setDrawAxisLine(false); // no axis line
+        yAxis.setDrawGridLines(false); // no grid lines
+        yAxis.setDrawZeroLine(true); // draw a zero line
+        yAxis.setDrawLabels(false); // no axis labels
+        yAxis.setAxisMinimum(0f); // start at zero
+        yAxis.setGranularity(1f); // interval 1
+        cravings_chart.getAxisRight().setEnabled(false); // no right axis
+
+        XAxis xAxis = cravings_chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextSize(12f);
+        xAxis.setTextColor(ContextCompat.getColor(getActivity(), R.color.text_color_secondary));
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(false);
+
+        cravings_chart.setDragEnabled(false);
+        cravings_chart.setScaleEnabled(false);
+
+        Legend legend = cravings_chart.getLegend();
+        legend.setEnabled(false);
+        cravings_chart.setDrawBorders(false);
+        cravings_chart.setDescription(null);
+        cravings_chart.setData(data);
+        cravings_chart.setFitBars(true); // make the x-axis fit exactly all bars
+        //cravings_chart.invalidate(); // refresh // calling animate instead, so no need to call this
+        cravings_chart.animateY(1200, Easing.EasingOption.EaseInBounce); // animate vertical 3000 milliseconds
+    }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -419,6 +482,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        activity = getActivity();
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
